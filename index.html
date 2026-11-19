@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>廖创新 Katrina · 作品集 Portfolio</title>
+<!--
+========================================================================
+  作品集网站 · 使用说明（重要，请先读这里）
+========================================================================
+  这是一个单文件网站，所有内容都在本文件里。你只需要用记事本/VSCode
+  打开，按下面标注的【替换】位置改文字、换图片、换视频链接即可。
+
+  全站需要你替换的地方，都用【替换】两个字标注了，直接搜索"替换"
+  就能定位到所有待填内容。
+
+  图片/封面图放在同目录的 assets/ 文件夹里，然后把 src 改成
+  assets/你的图片名.jpg 即可。
+========================================================================
+-->
+<style>
+:root{
+  /* ===== 低饱和 ins 风配色（莫兰迪色系）===== */
+  --bg:        #f4f1ec;   /* 主背景：暖米白 */
+  --bg-soft:   #eeeae3;   /* 卡片背景：浅褐白 */
+  --bg-card:   #faf8f4;   /* 卡片高光背景 */
+  --ink:       #3a3733;   /* 主文字：深灰褐（非纯黑，更柔和）*/
+  --ink-soft:  #6f6a63;   /* 次要文字：灰褐 */
+  --ink-faint: #a49e95;   /* 弱化文字/标签 */
+  --line:      #e4ded4;   /* 分割线 */
+  --accent:    #a3b0a0;   /* 点缀色：低饱和鼠尾草绿 */
+  --accent-2:  #c9b8a8;   /* 点缀色2：低饱和奶茶棕 */
+  --radius:    18px;
+  --radius-sm: 12px;
+  --shadow:    0 8px 30px rgba(90,80,70,.06);
+  --shadow-hover: 0 14px 44px rgba(90,80,70,.12);
+  --maxw:      1080px;
+  --font-cn:   "PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-en:   "Cormorant Garamond","Times New Roman",Georgia,serif;
+  --font-ui:   "Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-ui);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:.01em;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ===== 通用容器 ===== */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.section{padding:96px 0}
+.section-head{margin-bottom:48px}
+.eyebrow{
+  font-family:var(--font-ui);
+  font-size:12px;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);font-weight:600;margin-bottom:14px;
+}
+.section-title{
+  font-family:var(--font-en);
+  font-size:clamp(30px,5vw,46px);
+  font-weight:600;color:var(--ink);line-height:1.15;
+}
+.section-title .cn{
+  font-family:var(--font-cn);font-weight:500;
+  font-size:.5em;color:var(--ink-soft);display:block;
+  margin-top:8px;letter-spacing:.08em;
+}
+.section-desc{
+  color:var(--ink-soft);font-size:15px;max-width:560px;margin-top:16px;
+}
+
+/* ===== 顶部导航 ===== */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(244,241,236,.82);
+  backdrop-filter:saturate(160%) blur(14px);
+  -webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo{
+  font-family:var(--font-en);font-size:22px;font-weight:600;
+  letter-spacing:.02em;
+}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:30px;align-items:center}
+.nav-links a{
+  font-size:13px;color:var(--ink-soft);letter-spacing:.05em;
+  position:relative;padding:4px 0;transition:color .25s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-2px;width:0;height:1.5px;
+  background:var(--accent);transition:width .3s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;font-size:22px;color:var(--ink)}
+
+/* ===== 首屏 Hero ===== */
+.hero{
+  padding:120px 0 100px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:"";position:absolute;top:-120px;right:-140px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle at 30% 30%,var(--accent-2),transparent 70%);
+  opacity:.28;filter:blur(10px);
+}
+.hero::after{
+  content:"";position:absolute;bottom:-160px;left:-120px;
+  width:380px;height:380px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,var(--accent),transparent 70%);
+  opacity:.2;filter:blur(12px);
+}
+.hero-inner{position:relative;z-index:2;max-width:820px}
+.hero-tag{
+  display:inline-block;font-size:12px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-soft);border:1px solid var(--line);
+  padding:7px 16px;border-radius:999px;margin-bottom:30px;background:var(--bg-card);
+}
+.hero h1{
+  font-family:var(--font-en);
+  font-size:clamp(46px,9vw,88px);
+  font-weight:600;line-height:1.02;letter-spacing:-.01em;color:var(--ink);
+}
+.hero h1 .cn{
+  font-family:var(--font-cn);display:block;font-size:.42em;font-weight:500;
+  color:var(--ink-soft);margin-top:18px;letter-spacing:.06em;
+}
+.hero-lead{
+  margin-top:30px;font-size:18px;color:var(--ink-soft);max-width:600px;line-height:1.8;
+}
+.hero-edu{
+  margin-top:22px;font-size:14px;color:var(--ink-faint);letter-spacing:.02em;
+  padding-left:14px;border-left:2px solid var(--accent);
+}
+.hero-cta{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border-radius:999px;font-size:14px;letter-spacing:.03em;
+  transition:transform .25s,box-shadow .25s,background .25s;cursor:pointer;
+}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--bg)}
+
+/* ===== 能力标签条 ===== */
+.skills-bar{
+  display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:52px;align-items:center;
+}
+.skill-chip{
+  font-size:14px;color:var(--ink-soft);letter-spacing:.02em;
+  display:inline-flex;align-items:center;gap:9px;
+}
+.skill-chip::before{
+  content:"";width:5px;height:5px;border-radius:50%;
+  background:var(--accent);flex-shrink:0;
+}
+
+/* ===== 视频栏 ===== */
+.video-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:28px;
+}
+.video-card{
+  background:var(--bg-card);border:1px solid var(--line);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+  transition:transform .3s,box-shadow .3s;
+}
+.video-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.video-embed{position:relative;width:100%;aspect-ratio:16/9;background:var(--bg-soft)}
+.video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:12px;color:var(--ink-faint);
+  background:repeating-linear-gradient(45deg,#efeae2,#efeae2 12px,#eae4da 12px,#eae4da 24px);
+}
+.video-placeholder .play{
+  width:54px;height:54px;border-radius:50%;background:var(--bg-card);
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+}
+.video-placeholder .play::after{
+  content:"";border-left:16px solid var(--accent);
+  border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px;
+}
+.video-meta{padding:20px 22px}
+.video-meta h3{font-size:17px;font-weight:600;margin-bottom:6px}
+.video-meta p{font-size:14px;color:var(--ink-soft)}
+.video-meta .tags{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+.video-meta .tags span{font-size:12px;color:var(--accent);background:rgba(163,176,160,.14);padding:3px 10px;border-radius:6px}
+.video-meta .credit{
+  display:inline-flex;align-items:center;gap:6px;margin-top:12px;
+  font-size:12px;color:var(--ink-faint);
+}
+.video-meta .credit::before{
+  content:"";width:5px;height:5px;border-radius:50%;background:var(--accent-2);
+}
+
+/* ===== 活动页截图栏（瀑布/网格）===== */
+.shot-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;
+}
+.shot-item{
+  display:flex;flex-direction:column;border-radius:var(--radius-sm);
+  overflow:hidden;border:1px solid var(--line);background:var(--bg-card);
+  box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;cursor:pointer;
+}
+.shot-item:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.shot-item img{width:100%;height:200px;object-fit:cover;display:block}
+.shot-ph{
+  aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;
+  color:var(--ink-faint);font-size:13px;text-align:center;padding:20px;
+  background:repeating-linear-gradient(135deg,#efeae2,#efeae2 12px,#eae4da 12px,#eae4da 24px);
+}
+.shot-cap{padding:14px 16px;font-size:13px;color:var(--ink-soft);line-height:1.6;flex:1}
+.shot-cap strong{color:var(--ink);font-weight:600;font-size:13.5px}
+
+/* ===== 游戏品牌海外营销栏（科隆游戏展）===== */
+.gc-role{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:8px}
+.gc-chip{
+  flex:1;min-width:220px;background:var(--bg-card);border:1px solid var(--line);
+  border-radius:var(--radius-sm);padding:18px 20px;box-shadow:var(--shadow);
+}
+.gc-chip .gc-num{font-family:var(--font-en);font-size:26px;color:var(--accent);line-height:1.1}
+.gc-chip b{display:block;font-size:14px;color:var(--ink);margin:6px 0 4px;font-weight:600}
+.gc-chip span{font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.gc-sub{
+  font-family:var(--font-cn);font-size:21px;font-weight:600;color:var(--ink);
+  margin:42px 0 18px;display:flex;align-items:baseline;gap:12px;
+}
+.gc-sub::before{content:"";width:24px;height:1px;background:var(--accent);align-self:center}
+.gc-sub .en{font-size:12px;font-weight:400;color:var(--ink-faint);letter-spacing:.08em}
+.gc-item img{object-fit:contain;background:var(--bg-soft);height:230px}
+
+/* ===== 综艺 PPT 栏（轮播）===== */
+.ppt-viewer{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.ppt-stage{position:relative;aspect-ratio:16/9;background:var(--bg-soft)}
+.ppt-slide{position:absolute;inset:0;opacity:0;pointer-events:none;transition:opacity .5s;display:flex;align-items:center;justify-content:center}
+.ppt-slide.active{opacity:1;pointer-events:auto}
+.ppt-slide img{width:100%;height:100%;object-fit:contain}
+.ppt-ph{
+  width:100%;height:100%;display:flex;flex-direction:column;gap:10px;
+  align-items:center;justify-content:center;color:var(--ink-faint);font-size:14px;
+  background:repeating-linear-gradient(45deg,#efeae2,#efeae2 12px,#eae4da 12px,#eae4da 24px);
+}
+.ppt-ctrl{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-top:1px solid var(--line)}
+.ppt-ctrl button{
+  background:var(--bg);border:1px solid var(--line);width:40px;height:40px;border-radius:50%;
+  cursor:pointer;font-size:16px;color:var(--ink);transition:background .2s;
+}
+.ppt-ctrl button:hover{background:var(--bg-soft)}
+.ppt-dots{display:flex;gap:8px}
+.ppt-dots i{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:background .2s}
+.ppt-dots i.on{background:var(--accent);width:22px;border-radius:4px}
+.ppt-caption{padding:18px 22px 20px;border-top:1px solid var(--line)}
+.cap-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.cap-tags span{
+  font-size:12.5px;color:var(--ink-soft);background:rgba(163,176,160,.14);
+  border:1px solid rgba(163,176,160,.28);padding:5px 12px;border-radius:999px;letter-spacing:.02em;
+}
+.cap-role{
+  font-size:14px;color:var(--ink);display:flex;align-items:center;gap:8px;
+}
+.cap-role::before{
+  content:"我的角色";flex-shrink:0;font-size:11px;letter-spacing:.1em;color:var(--accent);
+  font-weight:600;background:var(--bg-soft);border:1px solid var(--line);
+  padding:3px 9px;border-radius:6px;
+}
+
+/* ===== 短剧宣发文案栏 ===== */
+/* ===== 短剧宣发文案栏 ===== */
+.drama-block{margin-bottom:56px}
+.drama-block:last-child{margin-bottom:0}
+.drama-title{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.drama-title .idx{
+  flex-shrink:0;font-family:var(--font-en);font-size:34px;font-weight:600;
+  color:var(--accent);line-height:1;
+}
+.drama-title h3{font-size:20px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.drama-title .sub{font-size:13px;color:var(--ink-faint);letter-spacing:.02em;display:block}
+.title-topic{display:flex;flex-direction:column;align-items:flex-start;gap:7px;margin-top:14px}
+.title-topic .thint{font-size:11px;color:var(--ink-faint);font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.drama-overview{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:26px 30px;box-shadow:var(--shadow);margin-bottom:24px;
+  display:grid;grid-template-columns:1fr;gap:16px;
+}
+.drama-ov-item{display:flex;gap:16px;align-items:baseline}
+.drama-ov-item .k{
+  flex-shrink:0;width:70px;font-size:12px;letter-spacing:.08em;color:var(--accent);
+  font-weight:600;padding-top:2px;
+}
+.drama-ov-item .v{font-size:14.5px;color:var(--ink);line-height:1.7}
+.copy-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.drama-topics{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;align-items:center}
+.drama-topics .tlabel{font-size:12px;color:var(--ink-faint);letter-spacing:.06em;margin-right:2px}
+.topic-btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+  color:#fff;background:#7c8a78;border:1px solid #7c8a78;
+  padding:9px 14px 9px 16px;border-radius:999px;letter-spacing:.01em;
+  box-shadow:0 3px 12px rgba(124,138,120,.32);position:relative;
+  transition:transform .25s,box-shadow .25s,background .25s,padding .25s;
+}
+.topic-btn::before{content:"#";color:#fff;opacity:.8;font-weight:700}
+.topic-btn .arw{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,.2);
+  font-size:13px;line-height:1;margin-left:2px;
+  animation:arwSlide 1.8s ease-in-out infinite;
+}
+.topic-btn:hover{
+  transform:translateY(-2px);background:#68765f;border-color:#68765f;
+  box-shadow:0 8px 22px rgba(104,118,95,.48);
+}
+.topic-btn:hover .arw{animation:none;background:rgba(255,255,255,.32);transform:translateX(2px)}
+@keyframes arwSlide{
+  0%,100%{transform:translateX(0);opacity:.85}
+  50%{transform:translateX(3px);opacity:1}
+}
+@media (prefers-reduced-motion:reduce){.topic-btn .arw{animation:none}}
+.copy-card{
+  background:var(--bg-card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+  transition:transform .3s,box-shadow .3s;
+}
+.copy-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
+.copy-card::before{
+  content:"\201C";position:absolute;top:-10px;right:22px;font-family:var(--font-en);
+  font-size:120px;color:var(--line);line-height:1;
+}
+.copy-card .label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px}
+.copy-card h3,.copy-card h4{font-size:17px;font-weight:600;margin-bottom:12px;position:relative;z-index:2;color:var(--ink)}
+.copy-card p{font-size:14.5px;color:var(--ink-soft);position:relative;z-index:2;white-space:pre-line}
+.copy-card .foot{margin-top:18px;font-size:13px;color:var(--ink-faint);border-top:1px solid var(--line);padding-top:14px}
+
+/* ===== 联系/页脚 ===== */
+.contact{text-align:center;background:var(--bg-soft);border-top:1px solid var(--line)}
+.contact .section-title{margin-bottom:22px}
+.contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.contact-links a{
+  background:var(--bg-card);border:1px solid var(--line);padding:12px 24px;border-radius:999px;
+  font-size:14px;color:var(--ink);transition:transform .2s,box-shadow .2s;
+}
+.contact-links a:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.footer{padding:40px 0;text-align:center;color:var(--ink-faint);font-size:13px}
+.footer-notice{
+  max-width:680px;margin:0 auto 20px;font-size:12px;line-height:1.95;
+  color:var(--ink-soft);opacity:1;letter-spacing:.01em;
+  padding-bottom:20px;border-bottom:1px solid var(--line);
+}
+.footer-notice .warn{color:var(--ink);font-weight:600}
+.footer-copy{font-size:13px;color:var(--ink-faint)}
+
+/* ===== Lightbox 大图查看 ===== */
+.lightbox{position:fixed;inset:0;background:rgba(40,36,32,.88);z-index:100;display:none;align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
+.lightbox.show{display:flex}
+.lightbox img{max-width:90%;max-height:90%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+
+/* ===== 滚动淡入动画 ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===== 响应式 ===== */
+@media(max-width:860px){
+  .section{padding:64px 0}
+  .video-grid,.copy-grid{grid-template-columns:1fr}
+  .shot-grid{grid-template-columns:repeat(2,1fr)}
+  .nav-links{
+    position:absolute;top:64px;left:0;right:0;background:var(--bg);
+    flex-direction:column;gap:0;padding:8px 0;border-bottom:1px solid var(--line);
+    display:none;
+  }
+  .nav-links.open{display:flex}
+  .nav-links a{padding:14px 28px;width:100%}
+  .nav-toggle{display:block}
+}
+@media(max-width:520px){
+  .shot-grid{grid-template-columns:1fr}
+  .hero{padding:80px 0 60px}
+  .wrap{padding:0 20px}
+}
+
+/* ===== 打印 / 导出 PDF 样式（仅打印时生效，不影响网页显示）===== */
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{background:#f4f1ec!important}
+  /* 隐藏导航、灯箱 */
+  .nav,.lightbox{display:none!important}
+  /* 强制显示所有淡入元素，禁用动画 */
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  *{animation:none!important}
+  /* 视频 iframe 无法在 PDF 中播放，替换为占位提示 */
+  .video-embed iframe{display:none!important}
+  .video-embed::after{
+    content:"▶ 在线视频 · 请访问网页版播放";
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    color:var(--ink-faint);font-size:14px;letter-spacing:.08em;
+  }
+  /* 综艺轮播：4 张方案竖排完整展示 */
+  .ppt-stage{aspect-ratio:auto!important}
+  .ppt-slide{position:relative!important;inset:auto!important;opacity:1!important;pointer-events:auto!important;display:block!important;margin-bottom:18px}
+  .ppt-slide img{width:100%!important;height:auto!important;object-fit:contain!important}
+  .ppt-ctrl,.ppt-caption{display:none!important}
+  /* 分页：避免卡片被拦腰截断 */
+  .video-card,.shot-item,.copy-card,.drama-overview,.drama-block,.gc-chip{break-inside:avoid;page-break-inside:avoid}
+  .section-head,.drama-title,.gc-sub{break-after:avoid;page-break-after:avoid}
+  .section{padding:44px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== 顶部导航 ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">Katrina<span>.</span>Liao</a>
+    <button class="nav-toggle" aria-label="menu">&#9776;</button>
+    <div class="nav-links">
+      <a href="#video">Video 视频</a>
+      <a href="#gamescom">Game 游戏品牌营销</a>
+      <a href="#ppt">Variety 综艺策划</a>
+      <a href="#shots">Events 本地生服营销</a>
+      <a href="#copy">Copywriting 短剧宣发</a>
+      <a href="#contact">Contact 联系</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== 首屏 Hero ==================== -->
+<header class="hero" id="top">
+  <div class="wrap hero-inner">
+    <span class="hero-tag">Content Creator · Portfolio 2026</span>
+    <h1>
+      廖创新 Katrina
+      <span class="cn">内容创作 · 营销策划</span>
+    </h1>
+    <p class="hero-edu">
+      中国传媒大学 戏剧与影视 硕士 · 2027 届　|　南昌大学 会展经济与管理 &amp; 广告学 双学位
+    </p>
+    <p class="hero-lead">
+      期待与志同道合的伙伴共同打造优质内容、出圈 campaign
+    </p>
+    <div class="hero-cta">
+      <a href="#video" class="btn btn-primary">查看作品 View Work</a>
+      <a href="#contact" class="btn btn-ghost">联系我 Get in Touch</a>
+    </div>
+    <div class="skills-bar">
+      <span class="skill-chip">Campaign 策划</span>
+      <span class="skill-chip">海外营销</span>
+      <span class="skill-chip">达人投放</span>
+      <span class="skill-chip">综艺创作</span>
+      <span class="skill-chip">短剧宣发</span>
+      <span class="skill-chip">游戏发行</span>
+      <span class="skill-chip">视频剪辑</span>
+      <span class="skill-chip">PPT 制作</span>
+      <span class="skill-chip">AI 创作</span>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== 视频作品 ==================== -->
+<section class="section" id="video">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">01 — Video Editing</div>
+      <h2 class="section-title">视频剪辑<span class="cn">剪辑与影像创作作品</span></h2>
+      <p class="section-desc">
+        涵盖 AI 音乐创作、纪实短片、影视混剪与创意换装等多种类型，
+        呈现在不同题材下的剪辑节奏把控与视听表达能力。
+      </p>
+    </div>
+    <div class="video-grid">
+
+      <!-- 1：AI 音乐 MV -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1dV1TBdEuq&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>《反烟雄联盟》AI 音乐 MV</h3>
+          <p>中国传媒大学课程作品。AI 生成音乐 × 跨次元 IP 角色，用戏谑的 MV 形式完成严肃的公共健康议题表达——猪猪侠、小八、戴珍珠耳环的少女集体"执法"二手烟。</p>
+          <div class="tags"><span>AI 音乐生成</span><span>MV 剪辑</span><span>公益议题</span></div>
+          <div class="credit">带领团队创作完成</div>
+        </div>
+      </div>
+
+      <!-- 2：游戏CG超燃混剪 -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1764y1Y7RC&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>游戏 CG 超燃混剪</h3>
+          <p>以《You should see me in a crown》为 BGM，强节奏音乐踩点《英雄联盟》《天使之石》《魔兽世界》等游戏 CG，用凌厉的卡点与转场堆叠出一支热血拉满的燃向混剪。</p>
+          <div class="tags"><span>游戏混剪</span><span>音乐卡点</span><span>燃向</span></div>
+          <div class="credit">个人独立创作</div>
+        </div>
+      </div>
+
+      <!-- 3：玫瑰少年 -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1T4g567ENb&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>《玫瑰少年》LGBT 影视混剪</h3>
+          <p>"爱你所爱，自由的灵魂无罪。"围绕《丹麦女孩》《小姐》等 LGBT 主题影视剪辑，刻画人物挣扎与群体困境，传递性别自由、性向平等的理念。</p>
+          <div class="tags"><span>影视混剪</span><span>议题表达</span><span>情绪剪辑</span></div>
+          <div class="credit">个人独立创作</div>
+        </div>
+      </div>
+
+      <!-- 4：开端混剪 -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="https://v.qq.com/txp/iframe/player.html?vid=h32938tti4c" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>《开端 · 交换余生》影视混剪</h3>
+          <p>"如果我们几经转折，结局一样不动。"以林俊杰细腻的歌声为线，将观众带回 2022 年初那场时间循环——用剪辑重述一段关于救赎与坚持的故事。</p>
+          <div class="tags"><span>影视混剪</span><span>情绪叙事</span><span>卡点</span></div>
+          <div class="credit">个人独立创作</div>
+        </div>
+      </div>
+
+      <!-- 5：姐姐真漂亮 一键换装 -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1Tsg56UEXQ&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>《姐姐真漂亮》舞台一键换装</h3>
+          <p>时代少年团打歌舞台混剪。别眨眼——换装像德芙一样丝滑！用精准的音乐卡点与无缝转场，实现舞台造型的一键切换。</p>
+          <div class="tags"><span>卡点剪辑</span><span>无缝转场</span><span>打歌舞台</span></div>
+          <div class="credit">个人独立创作</div>
+        </div>
+      </div>
+
+      <!-- 6：那些花儿 支教短片 -->
+      <div class="video-card reveal">
+        <div class="video-embed">
+          <iframe src="//player.bilibili.com/player.html?bvid=BV1FG411x742&page=1&high_quality=1&danmaku=0" allowfullscreen></iframe>
+        </div>
+        <div class="video-meta">
+          <h3>《那些花儿》支教纪实短片</h3>
+          <p>暑期支教公益记录。跟随支教队走进乡村课堂，以真实影像记录"生命影响生命"的瞬间——给自己一种可能，去播种太阳。</p>
+          <div class="tags"><span>纪实剪辑</span><span>公益短片</span><span>支教</span></div>
+          <div class="credit">带领团队创作完成，个人独立策划剪辑</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ==================== 游戏品牌海外营销（科隆游戏展）==================== -->
+<section class="section" id="gamescom" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">02 — Game Brand Global Marketing</div>
+      <h2 class="section-title">游戏品牌海外营销<span class="cn">腾讯天美 · 王者荣耀 × 科隆游戏展</span></h2>
+      <p class="section-desc">
+        科隆游戏展（gamescom）是全球规模最大的游戏展会之一，
+        王者系列游戏首次联合参展，通过现场试玩、限定周边与社媒传播直接触达海外玩家，
+        建立品牌认知、推动 IP 文化出海。
+      </p>
+    </div>
+
+    <div class="gc-role reveal">
+      <div class="gc-chip">
+        <div class="gc-num">40+</div>
+        <b>社媒传播物料</b>
+        <span>官宣海报、试玩手册、易拉宝等 40+ 展会物料的策划与对接，覆盖海外社媒官宣节奏</span>
+      </div>
+      <div class="gc-chip">
+        <div class="gc-num">40+</div>
+        <b>创意周边 sku</b>
+        <span>策划王者 IP 展会创意周边以促进二次传播，独立对接供应商完成设计、打样与大货制作</span>
+      </div>
+      <div class="gc-chip">
+        <div class="gc-num">2</div>
+        <b>品牌联名合作</b>
+        <span>参与王者荣耀 × 三星、头部茶饮品牌的商务合作执行，设计联名物料与展台互动玩法</span>
+      </div>
+    </div>
+
+    <h3 class="gc-sub reveal">海外社媒物料<span class="en">OVERSEAS SOCIAL ASSETS</span></h3>
+    <div class="shot-grid">
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-poster-2.jpg" alt="gamescom 2026 主视觉邀请函">
+        <div class="shot-cap"><strong>gamescom 2026 · 主视觉邀请函</strong><br>王者 IP 四大产品联票式设计，展会倒计时 last call，吸引全球玩家关注</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-poster-3.jpg" alt="王者IP展台参展情报图">
+        <div class="shot-cap"><strong>王者 IP 展台 · 参展情报（系列组图之一）</strong><br>面向海外社媒发布，将展台亮点同步给线上玩家</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-poster-1.jpg" alt="集章玩法规则海报">
+        <div class="shot-cap"><strong>集章玩法 · 规则海报</strong><br>三步集章换限定周边，游戏化机制拉满展台互动</div>
+      </div>
+    </div>
+
+    <h3 class="gc-sub reveal">创意周边策划<span class="en">CREATIVE MERCH</span></h3>
+    <div class="shot-grid">
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-merch-1.png" alt="超大行李牌">
+        <div class="shot-cap"><strong>超大行李牌</strong><br>不仅是展会周边，角色 Q 版形象随行李箱全球流动，推动游戏二次传播</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-merch-2.jpg" alt="王者logo纯金纪念币">
+        <div class="shot-cap"><strong>王者 logo 纯金纪念币</strong><br>4K 纯金，只此一枚，噱头拉满<br>#王者荣耀背后金主首次曝光</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-merch-3.jpg" alt="角色手绘国风超长帆布袋">
+        <div class="shot-cap"><strong>角色手绘国风超长帆布袋</strong><br>国风手绘角色跃然袋上，上身即成移动广告位<br>推动游戏传播、文化出海</div>
+      </div>
+    </div>
+
+    <h3 class="gc-sub reveal">展会线下物料<span class="en">OFFLINE EVENT MATERIALS</span></h3>
+    <div class="shot-grid">
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-offline-3.jpg" alt="科隆展台舞台大屏视觉">
+        <div class="shot-cap"><strong>主舞台 · 大屏视觉</strong><br>四大游戏角色 KV，借力母 IP 协同曝光新品游戏</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-guide-1.jpg" alt="HOK WORLD 试玩手册">
+        <div class="shot-cap"><strong>HOK: WORLD · 试玩手册</strong><br>四大试玩模式导引，降低海外玩家上手门槛</div>
+      </div>
+      <div class="shot-item gc-item reveal">
+        <img src="assets/gamescom-guide-2.jpg" alt="HOK ACE 试玩手册">
+        <div class="shot-cap"><strong>HOK: ACE · 试玩手册</strong><br>新手教程与匹配对战流程指引，服务现场试玩转化</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 综艺立项 PPT ==================== -->
+<section class="section" id="ppt" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">03 — Variety Show Proposal</div>
+      <h2 class="section-title">综艺内容策划<span class="cn">综艺 / 内容策划方案作品</span></h2>
+      <p class="section-desc">
+        参与的部分综艺与内容策划方案，展示内容策划与视觉排版能力；
+        已做模糊脱敏处理。如想了解更多项目细节，欢迎联系沟通。
+      </p>
+    </div>
+    <div class="ppt-viewer reveal">
+      <div class="ppt-stage" id="pptStage">
+        <div class="ppt-slide active"
+             data-tags="某S+选秀售后综艺·男团群像·房车自驾·音乐路书·新疆文旅·公路直播"
+             data-role="整体框架搭建、内容策划与排版设计">
+          <img src="assets/ppt-show-1.jpg" alt="综艺立项策划案">
+        </div>
+        <div class="ppt-slide"
+             data-tags="短剧选角直播·芒果长青IP·明星制片人助阵·抖音热播·直播商业化变现"
+             data-role="方案策划、汇报呈现，参与落地执行">
+          <img src="assets/ppt-show-2.jpg" alt="选角直播方案">
+        </div>
+        <div class="ppt-slide"
+             data-tags="艺人定制微综艺·芒果新生主持人·可视化博客·新书联动·心理健康议题"
+             data-role="方案撰写、单集内容策划与排版设计">
+          <img src="assets/ppt-show-3.jpg" alt="艺人定制微综艺方案">
+        </div>
+        <div class="ppt-slide"
+             data-tags="端内互动娱乐产品·夜间解压·深夜疗愈·知识夜校·定制微综·粉丝打投"
+             data-role="方案策划、汇报呈现，参与产品玩法设计与视觉呈现">
+          <img src="assets/ppt-show-4.jpg" alt="端内互动娱乐产品方案">
+        </div>
+      </div>
+      <div class="ppt-ctrl">
+        <button id="pptPrev" aria-label="prev">&#8249;</button>
+        <div class="ppt-dots" id="pptDots"></div>
+        <button id="pptNext" aria-label="next">&#8250;</button>
+      </div>
+      <div class="ppt-caption">
+        <div class="cap-tags" id="pptTags"></div>
+        <div class="cap-role" id="pptRole"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 活动页截图 ==================== -->
+<section class="section" id="shots">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">04 — Local Life Marketing</div>
+      <h2 class="section-title">本地生服营销活动<span class="cn">线上线下活动返图</span></h2>
+      <p class="section-desc">
+        覆盖线上会场、线下快闪、城市大屏与话题传播的整合营销 campaign。
+        以下为部分营销触点的实拍与页面返图，点击图片可放大查看。
+      </p>
+    </div>
+    <div class="shot-grid">
+
+      <div class="shot-item reveal">
+        <img src="assets/event-2.png" alt="活动主视觉 KV">
+        <div class="shot-cap"><strong>活动主视觉 · KV 设计</strong><br>城市 campaign 核心视觉呈现</div>
+      </div>
+      <div class="shot-item reveal">
+        <img src="assets/event-1.png" alt="线上互动领券会场">
+        <div class="shot-cap"><strong>线上会场 · 互动领券页</strong><br>抖音端内领券活动页面</div>
+      </div>
+      <div class="shot-item reveal">
+        <img src="assets/event-3.jpg" alt="门店地图领券玩法">
+        <div class="shot-cap"><strong>线上玩法 · 门店地图领券</strong><br>互动地图跳转与优惠券发放</div>
+      </div>
+      <div class="shot-item reveal">
+        <img src="assets/event-4.jpg" alt="线下快闪打卡装置">
+        <div class="shot-cap"><strong>线下快闪 · 打卡装置返图</strong><br>商场快闪现场与用户互动</div>
+      </div>
+      <div class="shot-item reveal">
+        <img src="assets/event-5.jpg" alt="户外大屏投放">
+        <div class="shot-cap"><strong>城市曝光 · 户外大屏投放</strong><br>商圈大屏 / 电梯 / 户外点位铺设</div>
+      </div>
+      <div class="shot-item reveal">
+        <img src="assets/event-6.jpg" alt="抖音热榜话题传播">
+        <div class="shot-cap"><strong>话题传播 · 抖音同城热榜第一</strong><br>#用一口春味打开南阳春天 登上热搜第一</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 短剧宣发文案 ==================== -->
+<section class="section" id="copy" style="background:var(--bg-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">05 — Short Drama Marketing</div>
+      <h2 class="section-title">短剧宣发策划<span class="cn">小红书短剧整体宣发 Brief</span></h2>
+      <p class="section-desc">
+        部分已上线短剧的公开传播策略，涵盖项目定位、话题矩阵设计与分层传播点位拆解，仅作个人能力展示，不含任何未公开的商业数据。
+      </p>
+    </div>
+
+    <!-- ========== 项目一：痴人之爱 ========== -->
+    <div class="drama-block reveal">
+      <div class="drama-title">
+        <span class="idx">01</span>
+        <div>
+          <h3>《犟骨》· 非遗女书双女救赎短剧</h3>
+          <span class="sub">首部非遗女书双女救赎短剧 · 剧情 × 文化 × 女性三线并行</span>
+          <div class="title-topic">
+            <span class="thint">点击查看 · 营销投放话题页</span>
+            <a class="topic-btn" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/topic/normal/691d8bcd01d4000000000001?fullscreen=true&naviHidden=yes">短剧犟骨双女救赎太带感了<span class="arw">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="drama-overview">
+        <div class="drama-ov-item"><span class="k">项目定位</span><span class="v">首部非遗女书双女救赎短剧——双女犟骨温情救赎、女性觉醒互助群像、非遗女书文化传承、精品制作</span></div>
+        <div class="drama-ov-item"><span class="k">核心打法</span><span class="v">剧情线 / 文化线 / 女性线三线并行，从 CP 爽感、文化厚度到精神共鸣层层递进</span></div>
+        <div class="drama-ov-item"><span class="k">我的角色</span><span class="v">三线宣发框架搭建 · CP 与群像卖点提炼 · 非遗文化联动策划 · 话题设计</span></div>
+      </div>
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="label">剧情线 · 双女主 CP</div>
+          <h4>星火相惜 · 百年救赎</h4>
+          <p>主打"互为铠甲、极致救赎"的双女主 CP——明媚年下小狗 × 清冷引导年上姐姐的「红白玫瑰」组合，对标"太平公主 × 上官婉儿"，以"跨时空双向救赎"定义女性情谊的最高形式。结合民国美学、虐恋纠葛、勇敢反抗，深挖"结老同""共患难"情节，强化"不是爱情，胜似爱情"的命运共同体。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">剧情线 · 破圈</div>
+          <h4>CP 乱炖 + 群像众生相</h4>
+          <p>以百合 CP 为核，辅以"军阀强制爱""留洋贵子追妻火葬场"等 BG 线 CP 满足更广泛破圈需求；再借梨园戏班、封建大宅中李瑞祥、三姨太、茉儿等群像角色，构建真实残酷又充满希望的时代切面，增加故事厚重感。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">文化线 · 非遗女书</div>
+          <h4>不只是文字，更是情感传承</h4>
+          <p>联动湖南省博设置剧集线下打卡点、推出女书主题周边（女书项链等）；邀请女书传承人探班，由官方及导演 / 美术 / 道具账号下场分享创作幕后与妆造设计，讲透"女书"作为女性专属文字所承载的精神寄托与无声反抗。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">女性线 · 犟骨精神</div>
+          <h4>Girls Help Girls 的百年回响</h4>
+          <p>聚焦剧中女性困境与多位女性互助救赎情节，放大"Girls Help Girls"的普世共鸣；深挖女性从被压迫到自我觉醒的完整路径，将剧名"犟骨"升华为时代女性精神；打通历史与现实，用百年间女性妆造变迁构建"百年女性对话"的精神接力。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 项目二：关于我和死对头同名这件事 ========== -->
+    <div class="drama-block reveal">
+      <div class="drama-title">
+        <span class="idx">02</span>
+        <div>
+          <h3>《关于我和死对头同名这件事》· 校园纯爱短剧</h3>
+          <span class="sub">吴夏帆导演作品 · 以节点营销 + 导演 IP 补短板、拉口碑</span>
+          <div class="title-topic">
+            <span class="thint">点击查看 · 营销投放话题页</span>
+            <a class="topic-btn" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/topic/normal/6858fd3901c0000000000001?fullscreen=true&naviHidden=yes">暑期档青春校园短剧天花板<span class="arw">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="drama-overview">
+        <div class="drama-ov-item"><span class="k">项目诊断</span><span class="v">劣势：校园言情赛道小众、竖屏契合度低、主演多为素人；优势：吴夏帆导演口碑在线、小清新风格化品质感强</span></div>
+        <div class="drama-ov-item"><span class="k">核心思路</span><span class="v">补短板 + 延长板——"高考"节点营销拓受众、"吴夏帆导演 IP"定品质调、高光助推讨论、"小红书校园短剧新标杆"平台收割</span></div>
+        <div class="drama-ov-item"><span class="k">我的角色</span><span class="v">传播策略设计 · 话题矩阵与征稿 Brief 撰写</span></div>
+      </div>
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="label">动作一 · 节点营销</div>
+          <h4>借势高考节点打年轻人群</h4>
+          <p>结合上线期与高考出分 / 志愿填报节点，用 #高考后的第一部校园短剧 #同名是对高考生的祝福吧 等话题，以"高考抉择""备考家庭""青春意难平"精准狙击准大学生与关注高考的用户。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">动作二 · 导演 IP</div>
+          <h4>用吴夏帆 IP 吸引赛道受众</h4>
+          <p>盘点吴夏帆合作过的樊治欣、方晓东等清爽系校园男主，借 #吴夏帆严选男主上新了 话题引流；官宣期联动合作艺人发布支持笔记，以"吴夏帆男主团为新剧打 call"造势，吸引导演粉与女性观众。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">动作三 · 高光助推</div>
+          <h4>名场面放大牵引长线情绪</h4>
+          <p>放大 CP / 剧情名场面与甜虐看点，抓取亮点台词做情绪牵引；播出期在小红书按高光预判与 UGC 讨论热点分角度下 Brief 征稿投放，提高期待、引导追看原片。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">动作四 · 平台收割</div>
+          <h4>立"校园短剧新标杆"心智</h4>
+          <p>用 #小红书校园短剧新标杆 #短剧的校园纯爱赛道请按这样卷，从播放数据、平台讨论、导演 IP 含金量、CP 观感多维度印证平台在赛道的影响力，强化"品质短剧"用户认知。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 项目三：他本该光芒万丈 ========== -->
+    <div class="drama-block reveal">
+      <div class="drama-title">
+        <span class="idx">03</span>
+        <div>
+          <h3>《他本该光芒万丈》· 豪门兄弟情感救赎剧</h3>
+          <span class="sub">小红书暑期档 · 恨海情天 · 双向救赎</span>
+          <div class="title-topic">
+            <span class="thint">点击查看 · 营销投放话题页</span>
+            <a class="topic-btn" target="_blank" rel="noopener" href="https://www.xiaohongshu.com/topic/ugc/689067320054000000000001?fullscreen=true&naviHidden=yes">豪门兄弟恨海情天双向救赎<span class="arw">→</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="drama-overview">
+        <div class="drama-ov-item"><span class="k">项目定位</span><span class="v">豪门兄弟恨海情天双向救赎剧 · 前期疯批纯恨、后期治愈救赎的极致反差</span></div>
+        <div class="drama-ov-item"><span class="k">核心策略</span><span class="v">围绕"恨海情天"情感救赎主线做高光铺量，主打兄弟关系互动线、复仇 vs 救赎故事线与带感纯爽观感</span></div>
+        <div class="drama-ov-item"><span class="k">主演阵容</span><span class="v">赵振栋（爹系禁欲疯批养兄）· 王轩（清纯腹黑复仇小少爷）</span></div>
+        <div class="drama-ov-item"><span class="k">话题矩阵</span><span class="v">#他本该光芒万丈　#小红书短剧暑期档　#豪门兄弟恨海情天双向救赎　#赵振栋王轩男主卡颜局</span></div>
+        <div class="drama-ov-item"><span class="k">我的角色</span><span class="v">宣发 Brief 撰写 · 传播点位拆解 · 话题矩阵设计</span></div>
+      </div>
+      <div class="copy-grid">
+        <div class="copy-card">
+          <div class="label">点位一 · 兄弟情</div>
+          <h4>极致反差的人设与情感钩子</h4>
+          <p>前期聚焦"疯批囚禁"纯恨、后期主打"恨海情天""双向救赎"，用爱恨同源的极致反差强化豪门兄弟相爱相杀主设定，破圈吸引腐女、承接暑期 BL 剧用户。卡颜向突出王轩清纯腹黑、赵振栋爹系禁欲的性张力阵容，人设向锚定"病娇白切黑复仇小少爷 ✖ 疯批爹系掌控欲养兄"。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">点位二 · 故事线</div>
+          <h4>复仇 vs 救赎强反转铺量</h4>
+          <p>聚焦剧情主线，围绕弟弟白切黑攻略布局、父亲假死真相大反转、弟弟失忆兄弟和好、双向救赎联手复仇等强反转名场面，铺展剧情钩子与切片，吸引短剧粉与路人观众。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">点位三 · 爽感体验</div>
+          <h4>多标签齐发的带感纯爽剧</h4>
+          <p>以"病娇白切黑复仇小少爷 ✖ 疯批爹系养兄""反转复仇""姐狗 4i""爽文御姐高智商女王""白切黑""爽文大女二"等多点位齐发力，用狗血抓马、节奏带感的剧情切片吸引下沉用户。</p>
+        </div>
+        <div class="copy-card">
+          <div class="label">点位四 · 借势 BL 热剧</div>
+          <h4>题材捆绑借势破圈</h4>
+          <p>借助《逆爱》《垂涎》等 BL 热剧热度做外围题材捆绑，利用"恨海情天""双向救赎"等双男主带感设定圈揽 BL 剧用户。（考虑到题材敏感，结合平台调性做合规化表达）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 联系 ==================== -->
+<section class="section contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow reveal">Let's Connect</div>
+    <h2 class="section-title reveal">期待与你相遇<span class="cn">欢迎联系，一起创造内容</span></h2>
+    <div class="contact-links reveal">
+      <a href="mailto:katrina_lcx@163.com">✉ katrina_lcx@163.com</a>
+      <a href="tel:18702500112">☎ 1870 2500 112</a>
+      <a href="#" onclick="return copyWechat(this)" data-wx="llccxx0131">微信 WeChat: llccxx0131</a>
+      <a href="assets/廖创新-简历.pdf" target="_blank" rel="noopener">下载简历 Resume</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <p class="footer-notice">
+    本站所展示的策划方案、创意内容与相关成果均为本人参与创作的作品，仅供求职交流与能力展示之用。<br>
+    部分内容已做脱敏与模糊处理，其著作权及相关权益归本人或原作品方所有。<br>
+    <span class="warn">未经授权，请勿复制、转载、摘编或用于任何商业用途；本人保留依法追究相关责任的权利。</span>
+  </p>
+  <div class="footer-copy">© 2026 廖创新 Katrina · Portfolio · Made with care</div>
+</footer>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox"><img src="" alt=""></div>
+
+<script>
+/* ===== 复制微信号 ===== */
+function copyWechat(el){
+  var wx=el.getAttribute('data-wx');
+  if(navigator.clipboard){navigator.clipboard.writeText(wx);}
+  var old=el.textContent;
+  el.textContent='已复制微信号 ✓ '+wx;
+  setTimeout(function(){el.textContent=old;},1600);
+  return false;
+}
+/* ===== 移动端导航 ===== */
+document.querySelector('.nav-toggle').addEventListener('click',function(){
+  document.querySelector('.nav-links').classList.toggle('open');
+});
+document.querySelectorAll('.nav-links a').forEach(function(a){
+  a.addEventListener('click',function(){document.querySelector('.nav-links').classList.remove('open');});
+});
+
+/* ===== 滚动淡入 ===== */
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+/* ===== 综艺 PPT 轮播 ===== */
+(function(){
+  var stage=document.getElementById('pptStage');
+  if(!stage)return;
+  var slides=stage.querySelectorAll('.ppt-slide');
+  var dotsWrap=document.getElementById('pptDots');
+  var cur=0;
+  slides.forEach(function(_,i){
+    var d=document.createElement('i');
+    if(i===0)d.classList.add('on');
+    d.addEventListener('click',function(){go(i);});
+    dotsWrap.appendChild(d);
+  });
+  var dots=dotsWrap.querySelectorAll('i');
+  var tagsBox=document.getElementById('pptTags');
+  var roleBox=document.getElementById('pptRole');
+  function renderCaption(){
+    var s=slides[cur];
+    var tags=(s.getAttribute('data-tags')||'').split('·').filter(Boolean);
+    tagsBox.innerHTML=tags.map(function(t){return '<span>'+t+'</span>';}).join('');
+    roleBox.textContent=s.getAttribute('data-role')||'';
+  }
+  function go(n){
+    slides[cur].classList.remove('active');dots[cur].classList.remove('on');
+    cur=(n+slides.length)%slides.length;
+    slides[cur].classList.add('active');dots[cur].classList.add('on');
+    renderCaption();
+  }
+  renderCaption();
+  document.getElementById('pptPrev').addEventListener('click',function(){go(cur-1);});
+  document.getElementById('pptNext').addEventListener('click',function(){go(cur+1);});
+})();
+
+/* ===== 图片 Lightbox（活动页截图点击放大）===== */
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=lb.querySelector('img');
+  document.addEventListener('click',function(e){
+    var img=e.target.closest('.shot-item img, .ppt-slide img');
+    if(img){lbImg.src=img.src;lb.classList.add('show');}
+    else if(e.target===lb){lb.classList.remove('show');}
+  });
+})();
+</script>
+</body>
+</html>
